@@ -4,5 +4,11 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Negozio.Core\Negozio.Core.csproj" />
+    <ProjectReference Include="..\Negozio.Dto\Negozio.Dto.csproj" />
+    <ProjectReference Include="..\NegozioDataAccess\Negozio.DataAccess.csproj" />
+  </ItemGroup>
+
 
 </Project>
