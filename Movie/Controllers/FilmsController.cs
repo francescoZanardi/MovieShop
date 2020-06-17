@@ -11,10 +11,10 @@ namespace Movie.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FilmController : ControllerBase
+    public class FilmsController : ControllerBase
     {
         private readonly IFilmService _filmService;
-            public FilmController(IFilmService filmService)
+            public FilmsController(IFilmService filmService)
         {
             _filmService = filmService;
         }
@@ -24,7 +24,7 @@ namespace Movie.Controllers
         {
             try
             {
-                var tomap = await _filmService.GetFilm();
+                var tomap = await _filmService.GetFilms();
                 var res = AnswerFilm.MappaPerLista(tomap);
                 return Ok();
             }

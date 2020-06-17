@@ -15,11 +15,11 @@ namespace Negozio.DataAccess.Services
         {
             _negozioContext = negozioContext;
         }
-        public async Task<List<Film>> GetFilm()
+        public async Task<List<Film>> GetFilms()
         {
             try
             {
-                var result = await _negozioContext.Films
+                var result = await _negozioContext.Film
                     .Include(x => x.FilmId)
                     .Include(x => x.FilmAutores)
                     .ThenInclude(x => x.Registas).ToListAsync();

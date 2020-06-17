@@ -6,6 +6,6 @@ namespace Negozio.DataAccess.Services
 {
     public interface IFilmService
     {
-        Task<List<Film>> GetFilm();
+        Task<List<Film>> GetFilms();
     }
 }

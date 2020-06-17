@@ -7,10 +7,10 @@ namespace NegozioDataAccess
     public class NegozioContext : DbContext 
     {
         public NegozioContext(DbContextOptions<NegozioContext> options) : base(options) { }
-        public DbSet<Cliente> Clientes { get; set; }
-        public DbSet <Film> Films { get; set; }
-        public DbSet<Negozioo> Negozios  { get; set; }
-        public DbSet<FilmAutore> FilmAutores { get; set; }
-        public DbSet<Regista> Registas { get; set; }
+        public DbSet<Cliente> Cliente { get; set; }
+        public DbSet <Film> Film { get; set; }
+        public DbSet<Negozioo> Negozioo  { get; set; }
+        public DbSet<FilmAutore> FilmAutore { get; set; }
+        public DbSet<Regista> Regista { get; set; }
     }
 }
