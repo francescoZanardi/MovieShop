@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Negozio.DataAccess.Services;
+using Negozio.Dto;
 
 namespace Movie.Controllers
 {
@@ -11,11 +13,26 @@ namespace Movie.Controllers
     [ApiController]
     public class FilmController : ControllerBase
     {
+        private readonly IFilmService _filmService;
+            public FilmController(IFilmService filmService)
+        {
+            _filmService = filmService;
+        }
         // GET: api/Film
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IActionResult> Get()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                var tomap = await _filmService.GetFilm();
+                var res = AnswerFilm.MappaPerLista(tomap);
+                return Ok();
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, null);
+                throw;
+            }
         }
 
         // GET: api/Film/5

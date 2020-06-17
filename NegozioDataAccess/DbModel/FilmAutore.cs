@@ -7,6 +7,7 @@ namespace Negozio.DataAccess.DbModel
 {
     public class FilmAutore
     {
+        //autore = regista
         [Key]
         public int FilmAutoreId { get; set; }
         public int FilmId { get; set; }
