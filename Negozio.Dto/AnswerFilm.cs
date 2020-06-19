@@ -43,10 +43,5 @@ namespace Negozio.Dto
             }
             return res;
         }
-
-        public static object MappaPerLista(Task<List<Film>> tomap)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
