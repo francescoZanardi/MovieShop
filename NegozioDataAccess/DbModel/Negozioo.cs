@@ -11,6 +11,6 @@ namespace Negozio.DataAccess.DbModel
         public int NegoziooId { get; set; }
         public string NomeNegozio { get; set; }
         public string Luogo { get; set; }
-        public virtual Film Films { get; set; }
+        public virtual List<Film> Films { get; set; }
     }
 }

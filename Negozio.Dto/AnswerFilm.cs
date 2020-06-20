@@ -27,16 +27,16 @@ namespace Negozio.Dto
                 tmp.Prezzo = item.Prezzo;
                 if (tmp.NomeNegozio != null)
                 {
-                    tmp.NomeNegozio = item.Negozios.NomeNegozio;
-                    tmp.Luogo = item.Negozios.Luogo;
+                    tmp.NomeNegozio = item.Negozioo.NomeNegozio;
+                    tmp.Luogo = item.Negozioo.Luogo;
                 }
                 tmp.Registi = new List<AnswerRegista>();
-                if (item.FilmAutores.Any())
+                if (item.FilmRegistas.Any())
                 {
-                    tmp.Registi = item.FilmAutores.Select(x => new AnswerRegista {
-                        RegistaId = x.Registas.RegistaId,
-                        Nome = x.Registas.Nome,
-                        Cognome = x.Registas.Cognome
+                    tmp.Registi = item.FilmRegistas.Select(x => new AnswerRegista {
+                        RegistaId = x.Regista.RegistaId,
+                        Nome = x.Regista.Nome,
+                        Cognome = x.Regista.Cognome
                     }).ToList();
                 }
                 res.Add(tmp);

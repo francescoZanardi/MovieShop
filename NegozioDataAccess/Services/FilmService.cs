@@ -20,9 +20,8 @@ namespace Negozio.DataAccess.Services
             try
             {
                 var result = await _negozioContext.Film
-                    .Include(x => x.FilmId)
-                    .Include(x => x.FilmAutores)
-                    .ThenInclude(x => x.Registas).ToListAsync();
+                    .Include(x => x.FilmRegistas)
+                    .ThenInclude(x => x.Regista).ToListAsync();
                 return result;
             }
             catch (Exception ex)

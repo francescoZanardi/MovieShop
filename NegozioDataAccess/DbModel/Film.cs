@@ -13,7 +13,7 @@ namespace Negozio.DataAccess.DbModel
         public int NegoziooId { get; set; }
         public DateTime Anno { get; set; }
         public decimal Prezzo { get; set; }
-        public virtual Negozioo Negozios { get; set; }
-        public virtual List<FilmRegista> FilmAutores { get; set; }
+        public virtual Negozioo Negozioo { get; set; }
+        public virtual List<FilmRegista> FilmRegistas { get; set; }
     }
 }
