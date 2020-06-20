@@ -27,7 +27,28 @@ namespace Negozio.DataAccess.Services
             catch (Exception ex)
             {
                 return null;
-                throw;
+            }
+        }
+        public async Task<Film> GetFilm(int id)
+        {
+            try
+            {
+                var result = await _negozioContext.Film
+                    .Include(x => x.FilmRegistas)
+                    .ThenInclude(x => x.Regista)
+                    .FirstOrDefaultAsync(x=>x.FilmId == id);
+                if (result != null)
+                {
+                    return result;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
             }
         }
     }

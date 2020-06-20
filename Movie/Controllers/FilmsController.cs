@@ -31,15 +31,29 @@ namespace Movie.Controllers
             catch (Exception)
             {
                 return StatusCode(500, null);
-                throw;
             }
         }
 
         // GET: api/Film/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
         {
-            return "value";
+            try
+            {
+                var toMap = await _filmService.GetFilm(id);
+                if (toMap == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return Ok(AnswerFilm.MappaFilm(toMap));
+                }
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, null);
+            }
         }
 
         // POST: api/Film

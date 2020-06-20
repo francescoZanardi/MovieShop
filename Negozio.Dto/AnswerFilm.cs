@@ -1,6 +1,7 @@
 ﻿using Negozio.DataAccess.DbModel;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -33,7 +34,8 @@ namespace Negozio.Dto
                 tmp.Registi = new List<AnswerRegista>();
                 if (item.FilmRegistas.Any())
                 {
-                    tmp.Registi = item.FilmRegistas.Select(x => new AnswerRegista {
+                    tmp.Registi = item.FilmRegistas.Select(x => new AnswerRegista
+                    {
                         RegistaId = x.Regista.RegistaId,
                         Nome = x.Regista.Nome,
                         Cognome = x.Regista.Cognome
@@ -42,6 +44,30 @@ namespace Negozio.Dto
                 res.Add(tmp);
             }
             return res;
+        }
+        public static AnswerFilm MappaFilm(Film film)
+        {
+            var tmp = new AnswerFilm();
+            tmp.FilmId = film.FilmId;
+            tmp.Titolo = film.Titolo;
+            tmp.Anno = film.Anno;
+            tmp.Prezzo = film.Prezzo;
+            if (tmp.NomeNegozio != null)
+            {
+                tmp.NomeNegozio = film.Negozioo.NomeNegozio;
+                tmp.Luogo = film.Negozioo.Luogo;
+            }
+            tmp.Registi = new List<AnswerRegista>();
+            if (film.FilmRegistas.Any())
+            {
+                tmp.Registi = film.FilmRegistas.Select(x => new AnswerRegista
+                {
+                    RegistaId = x.Regista.RegistaId,
+                    Nome = x.Regista.Nome,
+                    Cognome = x.Regista.Cognome
+                }).ToList();
+            }
+            return tmp;
         }
     }
 }
