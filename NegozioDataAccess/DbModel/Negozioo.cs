@@ -8,7 +8,7 @@ namespace Negozio.DataAccess.DbModel
     public class Negozioo
     {
         [Key]
-        public int NegozioId { get; set; }
+        public int NegoziooId { get; set; }
         public string NomeNegozio { get; set; }
         public string Luogo { get; set; }
         public virtual Film Films { get; set; }

@@ -26,11 +26,11 @@ namespace Movie.Controllers
             {
                 var tomap = await _filmService.GetFilms();
                 var res = AnswerFilm.MappaPerLista(tomap);
-                return Ok();
+                return Ok("Perfetto");
             }
             catch (Exception)
             {
-                return StatusCode(500, null);
+                return StatusCode(500, "cazzo");
                 throw;
             }
         }

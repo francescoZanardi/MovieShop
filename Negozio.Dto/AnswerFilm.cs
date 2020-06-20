@@ -15,10 +15,10 @@ namespace Negozio.Dto
         public string NomeNegozio { get; set; }
         public string Luogo { get; set; }
         public List<AnswerRegista> Registi { get; set; }
-        public static List<AnswerFilm> MappaPerLista(List<Film> films)
+        public static List<AnswerFilm> MappaPerLista(List<Film> Films)
         {
             var res = new List<AnswerFilm>();
-            foreach (var item in films)
+            foreach (var item in Films)
             {
                 var tmp = new AnswerFilm();
                 tmp.FilmId = item.FilmId;
@@ -42,11 +42,6 @@ namespace Negozio.Dto
                 res.Add(tmp);
             }
             return res;
-        }
-
-        public static object MappaPerLista(Task<List<Film>> tomap)
-        {
-            throw new NotImplementedException();
         }
     }
 }
