@@ -26,7 +26,7 @@ namespace Movie.Controllers
             {
                 var tomap = await _filmService.GetFilms();
                 var res = AnswerFilm.MappaPerLista(tomap);
-                return Ok();
+                return Ok(res);
             }
             catch (Exception)
             {
