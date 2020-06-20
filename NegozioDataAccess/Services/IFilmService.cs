@@ -8,5 +8,9 @@ namespace Negozio.DataAccess.Services
     {
         Task<List<Film>> GetFilms();
         Task<Film> GetFilm(int id);
+        Task<Film> GetFilmTitolo(string titolo);
+        Task<Negozioo> CheckNegozio(string nome, string luogo);
+        Task<Regista> CheckRegista(string nome, string cognome);
+        Task<bool> AddFilmToDb(Film film);
     }
 }

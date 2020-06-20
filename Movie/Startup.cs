@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Negozio.Core;
 using Negozio.DataAccess.Services;
 using NegozioDataAccess;
 
@@ -32,7 +33,9 @@ namespace Movie
             var ConnString = Configuration.GetConnectionString("DbString");
             services.AddDbContext<NegozioContext>(x => x.UseSqlServer(ConnString)); ;
             services.AddScoped<IFilmService, FilmService>();
+            services.AddScoped<IFilmCore, FilmCore>();        
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
