@@ -94,17 +94,18 @@ namespace Negozio.DataAccess.Services
                 return await _negozioContext.Regista.FirstOrDefaultAsync(x => x.Nome == toinsert.Nome && x.Cognome == toinsert.Cognome);
             }  
          }
-        public async Task<bool> AddFilmToDb(Film film)
+        public async Task<int> AddFilmToDb(Film film)
         {
             try
             {
                 _negozioContext.Add(film);
                 await _negozioContext.SaveChangesAsync();
-                return true;
+                var res = await _negozioContext.Film.FirstOrDefaultAsync(x =>x.Titolo.ToLower().Trim() == film.Titolo.ToLower().Trim());
+                return res.FilmId;
             }
             catch (Exception)
             {
-                return false;
+                return 0;
             }
         }
     }

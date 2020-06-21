@@ -5,6 +5,6 @@ namespace Negozio.Core
 {
     public interface IFilmCore
     {
-        Task<RequestFilm> PostFilm(RequestFilm requestFilm);
+        Task<int> PostFilm(RequestFilm requestFilm);
     }
 }

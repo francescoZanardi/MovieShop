@@ -66,7 +66,7 @@ namespace Movie.Controllers
             try
             {
                 var res = await _filmCore.PostFilm(value);
-                if (res != null)
+                if (res != 0)
                 {
                     return Ok(res);
                 }

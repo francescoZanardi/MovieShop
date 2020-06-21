@@ -14,7 +14,7 @@ namespace Negozio.Core
         {
             _filmService = filmService;
         }
-        public async Task<RequestFilm> PostFilm(RequestFilm requestFilm)
+        public async Task<int> PostFilm(RequestFilm requestFilm)
         {
             var esistefilm = await _filmService.GetFilmTitolo(requestFilm.Titolo);
             if (esistefilm == null)
@@ -30,16 +30,16 @@ namespace Negozio.Core
                 tmp.Film = daInserire;
                 daInserire.FilmRegistas.Add(tmp);
                 var insert = await _filmService.AddFilmToDb(daInserire);
-                if (insert)
+                if (insert != 0)
                 {
-                    return requestFilm;
+                    return insert;
                 }
                 else
                 {
-                    return null;
+                    return 0;
                 }
             }
-            return null;
+            return 0;
         }
     }
 }
