@@ -13,5 +13,6 @@ namespace Negozio.DataAccess.Services
         Task<Regista> CheckRegista(string nome, string cognome);
         Task<int> AddFilmToDb(Film film);
         Task <bool> UpdateFilm(Film film);
+        Task<bool> DeleteFilm(int id);
     }
 }

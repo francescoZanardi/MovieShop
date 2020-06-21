@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -151,6 +152,26 @@ namespace Negozio.DataAccess.Services
                 return false;
             }
         }
+        public async Task<bool> DeleteFilm (int id)
+        {
+            try
+            {
+                var todel =await _negozioContext.Film
+                    .Include(x =>x.FilmRegistas)
+                    .FirstOrDefaultAsync(x=>x.FilmId == id);
+                if (todel != null)
+                {
+                    _negozioContext.Remove(todel);
+                    await _negozioContext.SaveChangesAsync();
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
-    }
+     }
+}
 
