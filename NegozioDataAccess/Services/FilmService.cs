@@ -4,6 +4,7 @@ using NegozioDataAccess;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -108,5 +109,49 @@ namespace Negozio.DataAccess.Services
                 return 0;
             }
         }
+        public async Task<bool> UpdateFilm(Film film)
+        {
+            try
+            {
+                var ismod = false;
+                //non capisco perchè mi da errore se metto async
+                var tomod = _negozioContext.Film.FirstOrDefault(x => x.FilmId == film.FilmId);
+                if (tomod != null)
+                {
+                    if (tomod.Titolo != film.Titolo)
+                    {
+                        tomod.Titolo = film.Titolo;
+                        ismod = true;
+                    }
+                    if (tomod.NegoziooId != film.NegoziooId)
+                    {
+                        tomod.NegoziooId = film.NegoziooId;
+                        ismod = true;
+                    }
+                    if (tomod.Anno != film.Anno)
+                    {
+                        tomod.Anno = film.Anno;
+                        ismod = true;
+                    }
+                    if (tomod.Prezzo != film.Prezzo)
+                    {
+                        tomod.Prezzo = film.Prezzo;
+                        ismod = true;
+                    }
+                  
+                    if (ismod)
+                    {
+                        _negozioContext.Update(tomod);
+                        await _negozioContext.SaveChangesAsync();
+                    }
+                }
+                return ismod;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        }
     }
-}
+
