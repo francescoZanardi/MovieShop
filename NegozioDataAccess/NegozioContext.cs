@@ -12,5 +12,7 @@ namespace NegozioDataAccess
         public DbSet<Negozioo> Negozioo  { get; set; }
         public DbSet<FilmRegista> FilmRegista { get; set; }
         public DbSet<Regista> Regista { get; set; }
+        public DbSet<Attori> Attori { get; set; }
+        public DbSet<FilmAttori> FilmAttori { get; set; }
     }
 }
