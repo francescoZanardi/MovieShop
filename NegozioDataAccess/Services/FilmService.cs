@@ -114,8 +114,7 @@ namespace Negozio.DataAccess.Services
             try
             {
                 var ismod = false;
-                //non capisco perchè mi da errore se metto async
-                var tomod = _negozioContext.Film.FirstOrDefault(x => x.FilmId == film.FilmId);
+                var tomod = await _negozioContext.Film.FirstOrDefaultAsync(x => x.FilmId == film.FilmId);
                 if (tomod != null)
                 {
                     if (tomod.Titolo != film.Titolo)
