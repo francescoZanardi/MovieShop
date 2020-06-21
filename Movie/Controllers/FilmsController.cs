@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Negozio.Core;
 using Negozio.DataAccess.Services;
 using Negozio.Dto;
 
@@ -14,9 +15,11 @@ namespace Movie.Controllers
     public class FilmsController : ControllerBase
     {
         private readonly IFilmService _filmService;
-            public FilmsController(IFilmService filmService)
+        private readonly IFilmCore _filmCore;
+            public FilmsController(IFilmService filmService, IFilmCore filmCore)
         {
             _filmService = filmService;
+            _filmCore = filmCore;
         }
         // GET: api/Film
         [HttpGet]
@@ -58,8 +61,24 @@ namespace Movie.Controllers
 
         // POST: api/Film
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Post([FromBody] RequestFilm value)
         {
+            try
+            {
+                var res = await _filmCore.PostFilm(value);
+                if (res != null)
+                {
+                    return Ok(res);
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, null);
+            }
         }
 
         // PUT: api/Film/5

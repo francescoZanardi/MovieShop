@@ -16,7 +16,7 @@ namespace Negozio.Core
         }
         public async Task<RequestFilm> PostFilm(RequestFilm requestFilm)
         {
-            var esistefilm = _filmService.GetFilmTitolo(requestFilm.Titolo);
+            var esistefilm = await _filmService.GetFilmTitolo(requestFilm.Titolo);
             if (esistefilm == null)
             {
                 var daInserire = new Film();
