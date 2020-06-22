@@ -15,5 +15,7 @@ namespace Negozio.DataAccess.DbModel
         public decimal Prezzo { get; set; }
         public virtual Negozioo Negozioo { get; set; }
         public virtual List<FilmRegista> FilmRegistas { get; set; }
+        public virtual Attori Attori { get; set; }
+ 
     }
 }

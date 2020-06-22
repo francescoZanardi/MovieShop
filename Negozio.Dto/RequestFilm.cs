@@ -13,5 +13,7 @@ namespace Negozio.Dto
         public string Luogo { get; set; }
         public string NomeRegista { get; set; }
         public string CognomeRegista { get; set; }
+        public string NomeAttori { get; set; }
+        public string CognomeAttori { get; set; }
     }
 }

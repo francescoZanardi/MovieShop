@@ -11,5 +11,6 @@ namespace Negozio.DataAccess.DbModel
         public int AttoriId { get; set; }
         public string Nome { get; set; }
         public string Cognome { get; set; }
+        public List<FilmAttori> FilmAttoris { get; set; }
     }
 }

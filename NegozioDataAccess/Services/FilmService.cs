@@ -96,6 +96,44 @@ namespace Negozio.DataAccess.Services
                 return await _negozioContext.Regista.FirstOrDefaultAsync(x => x.Nome == toinsert.Nome && x.Cognome == toinsert.Cognome);
             }  
          }
+        public async Task<Attori> CheckAttori (string nome, string cognome)
+        {
+            var res = await _negozioContext.Attori.FirstOrDefaultAsync(x=>x.Nome.Trim().ToLower() == nome.Trim().ToLower() && x.Cognome.Trim().ToLower() == cognome.Trim().ToLower());
+            if (res != null)
+            {
+                return res;
+            }
+            else
+            {
+                var toinsert = new Attori();
+                toinsert.Nome = nome;
+                toinsert.Cognome = cognome;
+                _negozioContext.Add(toinsert);
+                await _negozioContext.SaveChangesAsync();
+                return await _negozioContext.Attori.FirstOrDefaultAsync(x => x.Nome == toinsert.Nome && x.Cognome == toinsert.Cognome);
+            }
+        }
+        public async Task<Attori> GetAttori(int id)
+        {
+            try
+            {
+                var result = await _negozioContext.Attori
+                    .Include(x => x.FilmAttoris)
+                    .FirstOrDefaultAsync(x => x.AttoriId == id);
+                if (result != null)
+                {
+                    return result;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         public async Task<int> AddFilmToDb(Film film)
         {
             try
