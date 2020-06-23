@@ -5,11 +5,13 @@ using System.Text;
 
 namespace Negozio.DataAccess.DbModel
 {
-    public class FilmAttori
+    public class FilmAttore
     {
         [Key]
-        public int FilmAttoriId { get; set; }
-        public int AttoriId { get; set; }
+        public int FilmAttoreId { get; set; }
+        public int AttoreId { get; set; }
         public int FilmId { get; set; }
+        public virtual Attore Attore { get; set; }
+        public virtual Film Film { get; set; }
     }
 }

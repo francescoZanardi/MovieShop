@@ -25,7 +25,11 @@ namespace Negozio.Core
                 daInserire.Prezzo = requestFilm.Prezzo;
                 daInserire.Negozioo = await _filmService.CheckNegozio(requestFilm.NomeNegozio, requestFilm.Luogo);
                 daInserire.FilmRegistas = new List<FilmRegista>();
-                daInserire.Attori = await _filmService.CheckAttori(requestFilm.NomeAttori, requestFilm.CognomeAttori);
+                daInserire.FilmAttores = new List<FilmAttore>();
+                daInserire.FilmAttores.Add(new FilmAttore() 
+                {
+                    Attore = await _filmService.CheckAttori(requestFilm.NomeAttori, requestFilm.CognomeAttori)
+                });
                 var tmp = new FilmRegista();
                 tmp.Regista = await _filmService.CheckRegista(requestFilm.NomeRegista, requestFilm.CognomeRegista);
                 tmp.Film = daInserire;

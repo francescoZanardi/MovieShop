@@ -11,7 +11,7 @@ namespace Negozio.DataAccess.Services
         Task<Film> GetFilmTitolo(string titolo);
         Task<Negozioo> CheckNegozio(string nome, string luogo);
         Task<Regista> CheckRegista(string nome, string cognome);
-        Task<Attori> CheckAttori(string nome, string cognome);
+        Task<Attore> CheckAttori(string nome, string cognome);
         Task<int> AddFilmToDb(Film film);
         Task <bool> UpdateFilm(Film film);
         Task<bool> DeleteFilm(int id);

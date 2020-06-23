@@ -17,7 +17,7 @@ namespace Movie.Controllers
     {
         private readonly IFilmService _filmService;
         private readonly IFilmCore _filmCore;
-            public FilmsController(IFilmService filmService, IFilmCore filmCore)
+        public FilmsController(IFilmService filmService, IFilmCore filmCore)
         {
             _filmService = filmService;
             _filmCore = filmCore;
